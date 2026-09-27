@@ -1,0 +1,23 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+test = "test"
+solc = "0.8.26"
+evm_version = "cancun"
+optimizer = true
+optimizer_runs = 200
+ffi = false
+fs_permissions = []
+
+[fuzz]
+runs = 256
+seed = "0x4241544348"
+
+[fmt]
+line_length = 120
+
+[lint]
+# Intentional casts in the packed-ownership encoding and in BaselineNFT's plain `_mint`
+# (the spec requires no receiver callback on mint).
+exclude_lints = ["unsafe-typecast", "unsafe-oz-erc721-mint"]
